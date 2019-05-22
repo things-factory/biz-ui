@@ -14,7 +14,6 @@ class BizUiMain extends connect(store)(PageView) {
     return html`
       <section>
         <h2>BizUi</h2>
-        <img src=${logo}></img>
       </section>
     `
   }
