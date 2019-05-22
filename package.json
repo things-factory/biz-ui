@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/biz-ui",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -23,7 +23,10 @@
     "migration:revert": "node ./node_modules/typeorm/cli.js migration:revert"
   },
   "dependencies": {
+    "@things-factory/biz-base": "*",
     "@things-factory/layout-base": "*",
+    "@things-factory/menu-ui": "*",
+    "@things-factory/resource-ui": "*",
     "@things-factory/shell": "*"
   },
   "devDependencies": {}
