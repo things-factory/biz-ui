@@ -61,10 +61,10 @@ class ApprovePartnershipDetail extends localize(i18next)(LitElement) {
 
           ${this.data.activated
             ? html`
-                <label>${i18next.t('label.approver')}</label>
+                <label>${`${i18next.t('label.approver')} /  ${i18next.t('label.rejecter')}`}</label>
                 <input name="updater" value="${`${this.data.updater.name} (${this.data.updater.email})`}" readonly />
 
-                <label>${i18next.t('label.approved_at')}</label>
+                <label>${`${i18next.t('label.approved_at')} / ${i18next.t('label.rejected_at')}`}</label>
                 <input name="updatedAt" type="datetime-local" value="${this.updatedAt}" readonly />
               `
             : ''}

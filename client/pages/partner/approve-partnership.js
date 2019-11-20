@@ -149,14 +149,14 @@ class ApprovePartnership extends localize(i18next)(PageView) {
         },
         {
           name: 'updater',
-          header: i18next.t('label.approver'),
+          header: `${i18next.t('label.approver')} /  ${i18next.t('label.rejecter')}`,
           type: 'object',
           record: { align: 'center' },
           width: 280
         },
         {
           name: 'updatedAt',
-          header: i18next.t('label.approved_at'),
+          header: `${i18next.t('label.approved_at')} / ${i18next.t('label.rejected_at')}`,
           type: 'datetime',
           record: { align: 'center' },
           width: 250
