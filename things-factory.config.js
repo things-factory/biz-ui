@@ -5,8 +5,8 @@ export default {
   route,
   routes: [
     {
-      tagname: 'biz-ui-main',
-      page: 'biz-ui-main'
+      tagname: 'approve-partnership',
+      page: 'approve_partnership'
     }
   ],
   bootstrap
