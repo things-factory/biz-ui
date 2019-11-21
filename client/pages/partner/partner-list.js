@@ -87,18 +87,6 @@ class PartnerList extends localize(i18next)(PageView) {
         label: i18next.t('label.type'),
         name: 'type',
         props: { searchOper: 'i_like' }
-      },
-      {
-        label: i18next.t('label.status'),
-        name: 'status',
-        props: { searchOper: 'i_like' }
-      },
-      {
-        label: i18next.t('label.activated'),
-        name: 'activated',
-        type: 'checkbox',
-        props: { searchOper: 'eq' },
-        attrs: ['indeterminate']
       }
     ]
 
