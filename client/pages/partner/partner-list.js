@@ -1,13 +1,11 @@
 import '@things-factory/form-ui'
 import '@things-factory/grist-ui'
 import { i18next, localize } from '@things-factory/i18n-base'
-import { openPopup } from '@things-factory/layout-base'
 import { client, gqlBuilder, isMobileDevice, PageView, ScrollbarStyles } from '@things-factory/shell'
 import gql from 'graphql-tag'
 import { css, html } from 'lit-element'
-import './approve-partnership-detail'
 
-class ApprovePartnership extends localize(i18next)(PageView) {
+class PartnerList extends localize(i18next)(PageView) {
   static get properties() {
     return {
       searchFields: Array,
@@ -107,7 +105,6 @@ class ApprovePartnership extends localize(i18next)(PageView) {
     this.config = {
       columns: [
         { type: 'gutter', gutterName: 'sequence' },
-        { type: 'gutter', gutterName: 'button', icon: 'reorder', handlers: { click: this._openPopup.bind(this) } },
         {
           name: 'partnerBizplace',
           header: i18next.t('field.partner'),
@@ -122,41 +119,29 @@ class ApprovePartnership extends localize(i18next)(PageView) {
           width: 120
         },
         {
-          name: 'status',
-          header: i18next.t('label.status'),
-          record: { align: 'center' },
-          width: 120
-        },
-        {
-          name: 'activated',
-          header: i18next.t('label.activated'),
-          type: 'boolean',
-          width: 80
-        },
-        {
-          name: 'creator',
+          name: 'requester',
           header: i18next.t('label.requester'),
           type: 'object',
           record: { align: 'center' },
           width: 280
         },
         {
-          name: 'createdAt',
+          name: 'requestedAt',
           header: i18next.t('label.requested_at'),
           type: 'datetime',
           record: { align: 'center' },
           width: 250
         },
         {
-          name: 'updater',
-          header: `${i18next.t('label.approver')} /  ${i18next.t('label.rejecter')}`,
+          name: 'approver',
+          header: i18next.t('label.approver'),
           type: 'object',
           record: { align: 'center' },
           width: 280
         },
         {
-          name: 'updatedAt',
-          header: `${i18next.t('label.approved_at')} / ${i18next.t('label.rejected_at')}`,
+          name: 'approvedAt',
+          header: i18next.t('label.approved_at'),
           type: 'datetime',
           record: { align: 'center' },
           width: 250
@@ -181,18 +166,16 @@ class ApprovePartnership extends localize(i18next)(PageView) {
                 description
               }
               type
-              status
-              activated
-              creator {
+              requester {
                 name
                 description
               }
-              createdAt
-              updater {
+              requestedAt
+              approver {
                 name
                 description
               }
-              updatedAt 
+              approvedAt 
             }
             total
           }
@@ -207,22 +190,6 @@ class ApprovePartnership extends localize(i18next)(PageView) {
       }
     }
   }
-
-  _openPopup(_columns, _data, _column, record, _rowIndex) {
-    openPopup(
-      html`
-        <approve-partnership-detail
-          .data="${record}"
-          @partnership-changed="${() => this.dataGrist.fetch()}"
-        ></approve-partnership-detail>
-      `,
-      {
-        backdrop: true,
-        size: 'medium',
-        title: i18next.t('title.approve_partnership_detail')
-      }
-    )
-  }
 }
 
-window.customElements.define('approve-partnership', ApprovePartnership)
+window.customElements.define('partner-list', PartnerList)

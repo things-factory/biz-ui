@@ -5,8 +5,8 @@ export default {
   route,
   routes: [
     {
-      tagname: 'approve-partnership',
-      page: 'approve_partnership'
+      tagname: 'partner-list',
+      page: 'partners'
     }
   ],
   bootstrap
