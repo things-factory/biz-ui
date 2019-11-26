@@ -54,12 +54,6 @@ class PartnerList extends localize(i18next)(PageView) {
     `
   }
 
-  constructor() {
-    super()
-    this.config = {}
-    this.data = { records: {} }
-  }
-
   get context() {
     return {
       title: i18next.t('title.approve_partnership')

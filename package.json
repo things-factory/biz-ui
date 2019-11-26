@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/biz-ui",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -24,9 +24,12 @@
   },
   "dependencies": {
     "@things-factory/biz-base": "^1.0.0-alpha.1",
+    "@things-factory/code-base": "^1.0.0-alpha.1",
     "@things-factory/form-ui": "^1.0.0-alpha.1",
     "@things-factory/grist-ui": "^1.0.0-alpha.1",
     "@things-factory/i18n-base": "^1.0.0-alpha.1",
+    "@things-factory/import-ui": "^1.0.0-alpha.1",
+    "@things-factory/layout-base": "^1.0.0-alpha.1",
     "@things-factory/shell": "^1.0.0-alpha.1"
   },
   "devDependencies": {}
