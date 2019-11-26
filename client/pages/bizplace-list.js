@@ -1,7 +1,7 @@
 import '@things-factory/form-ui'
 import '@things-factory/grist-ui'
 import { i18next, localize } from '@things-factory/i18n-base'
-import '@things-factory/import-ui'
+import { openImportPopUp } from '@things-factory/import-ui'
 import { openPopup } from '@things-factory/layout-base'
 import {
   client,
@@ -87,7 +87,19 @@ class BizplaceList extends connect(store)(localize(i18next)(PageView)) {
         data: this._exportableData.bind(this)
       },
       importable: {
-        handler: this._importableData.bind(this)
+        handler: records => {
+          openImportPopUp(
+            records,
+            {
+              rows: this.config.rows,
+              columns: [...this.config.columns.filter(column => column.imex !== undefined)]
+            },
+            async patches => {
+              await this._saveBizplaces(patches)
+              history.back()
+            }
+          )
+        }
       }
     }
   }
@@ -222,29 +234,6 @@ class BizplaceList extends connect(store)(localize(i18next)(PageView)) {
     if (this.active) {
       this.dataGrist.fetch()
     }
-  }
-
-  _importableData(records) {
-    openPopup(
-      html`
-        <import-pop-up
-          .records=${records}
-          .config=${{
-            rows: this.config.rows,
-            columns: [...this.config.columns.filter(column => column.imex !== undefined)]
-          }}
-          .importHandler="${async patches => {
-            await this._saveBizplaces(patches)
-            history.back()
-          }}"
-        ></import-pop-up>
-      `,
-      {
-        backdrop: true,
-        size: 'large',
-        title: i18next.t('title.import')
-      }
-    )
   }
 
   async fetchHandler({ page, limit, sorters = [{ name: 'name' }] }) {
