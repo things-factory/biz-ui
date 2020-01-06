@@ -1,7 +1,15 @@
 export default function route(page) {
   switch (page) {
-    case 'biz-ui-main':
-      import('./pages/bizplace')
+    case 'companies':
+      import('./pages/company-list')
+      return page
+
+    case 'bizplaces':
+      import('./pages/bizplace-list')
+      return page
+
+    case 'partners':
+      import('./pages/partner-list')
       return page
   }
 }

@@ -5,8 +5,16 @@ export default {
   route,
   routes: [
     {
-      tagname: 'biz-ui-main',
-      page: 'biz-ui-main'
+      tagname: 'company-list',
+      page: 'companies'
+    },
+    {
+      tagname: 'bizplace-list',
+      page: 'bizplaces'
+    },
+    {
+      tagname: 'partner-list',
+      page: 'partners'
     }
   ],
   bootstrap
