@@ -34,21 +34,14 @@ class BizplaceList extends connect(store)(localize(i18next)(PageView)) {
         :host {
           display: flex;
           flex-direction: column;
-
           overflow: hidden;
         }
 
         search-form {
           overflow: visible;
         }
-        .grist {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          overflow-y: auto;
-        }
         data-grist {
-          overflow-y: hidden;
+          overflow-y: auto;
           flex: 1;
         }
       `
@@ -59,13 +52,11 @@ class BizplaceList extends connect(store)(localize(i18next)(PageView)) {
     return html`
       <search-form .fields="${this.searchFields}" @submit="${e => this.dataGrist.fetch()}"></search-form>
 
-      <div class="grist">
-        <data-grist
-          .mode="${isMobileDevice() ? 'LIST' : 'GRID'}"
-          .config="${this.config}"
-          .fetchHandler="${this.fetchHandler.bind(this)}"
-        ></data-grist>
-      </div>
+      <data-grist
+        .mode="${isMobileDevice() ? 'LIST' : 'GRID'}"
+        .config="${this.config}"
+        .fetchHandler="${this.fetchHandler.bind(this)}"
+      ></data-grist>
     `
   }
 
