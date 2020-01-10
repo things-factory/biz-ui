@@ -166,6 +166,13 @@ export class ContactPointList extends localize(i18next)(LitElement) {
           width: 120
         },
         {
+          type: 'string',
+          name: 'address',
+          record: { align: 'left', editable: true },
+          header: i18next.t('field.address'),
+          width: 300
+        },
+        {
           type: 'object',
           name: 'updater',
           record: { align: 'left', editable: false },
@@ -207,6 +214,7 @@ export class ContactPointList extends localize(i18next)(LitElement) {
               email
               fax
               phone
+              address
               description
               updatedAt
               updater{
